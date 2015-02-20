@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <p>The idea is to have a lot of repetition on the
+  basic ideas on different types of problems. We believe it doesn’t help much
+  to give one example only on how to use a given feature. For instance, knowing
+  that the construct <code>s/foo/bar/</code> is used to search and replace text is easy to
+  remember, but that doesn’t mean one has the necessary experience to use it to
+  solve different problems.</p>
+
+  <p>For instance, for a really beginner programmer, if he or she knows they can
+  do <code>2 + 3 = 5</code> and that they can do <code>a = 2; b = 3;</code> and then proceed to
+  <code>a + b = 5</code> doesn’t mean they’ll realise that they can also do <code>a + 3</code> and
+  <code>2 + b</code> or even <code>a + -5</code>, for instance.</p>
+
+  <p>I <strong>emphasize</strong>: lots of examples that keep reusing the same concepts to solve
+  different problems really help one gain insight on how to use them for even
+  more problems later much more than just memorizing “Ah, <code>s</code> is substitute”.</p>
+
+  <p>In the book Mastering Regular Expressions the author says that a lot of stuff
+  in the book are not about regex itself, but are about <strong>using</strong> regex. That is a really
+  nice idea to cling to.</p>
+
+  <p>I wish some IRC channels were more open to related subjects instead of being
+  proud to shout “off-topic” to everything they possibly can.</p>
+
+  <h1 class="page-heading">Posts</h1>
+
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>

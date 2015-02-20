@@ -1,0 +1,6 @@
+# Jekyll's generated html files.
+_site/
+# Vim tags file.
+tags
+
+.sass-cache/
