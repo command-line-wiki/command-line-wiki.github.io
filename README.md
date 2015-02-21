@@ -13,6 +13,7 @@ line tools in general. This is the list of things that should be covered:
 - regex (in general)
 - possibly some networking commands like the `ip`, `ping`, `tracert`, etc...
 - shell scripting (bash, zsh, etc)
+- etc, etc, etc...
 
 Shell scripting is not command line strictly, but it is used on the command
 line and it would be nice to write about that too.
