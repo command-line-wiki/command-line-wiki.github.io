@@ -9,6 +9,7 @@ permalink: sed/introduction-to-sed.html
 
 [Intermediate Sed Concepts and Commands](02-intermediate-sed.html).
 
+<p><a href='#other-sed-learning-resources'>Other Sed Learning Resources</a></p>
 
 The idea is to have a lot of repetition on the basic ideas on different types
 of problems. We believe it doesn't help much to give one example only on how to
@@ -33,4 +34,15 @@ I wish some IRC channels were more open to related subjects instead of being
 proud to shout “off-topic” to everything they possibly can.
 
 
+## Other Sed Learning Resources ##
+
+- [GNU Sed Online Info Page](https://www.gnu.org/software/sed/manual/sed.html).
+- [Sed FAQ](http://sed.sourceforge.net/sedfaq.html).
+- [Sed Oneliners](http://sed.sourceforge.net/sed1line.txt).
+- [sedsed](http://aurelio.net/projects/sedsed/) &mdash; This will help you debug
+and better understand Sed in general.
+- [Sed's Grab Bag](http://sed.sourceforge.net/grabbag/scripts/) &mdash; A lot
+of cool Sed stuff.
+- [Colored Sed Scripts](http://sed.sourceforge.net/local/scripts/) &mdash;
+Stuff generated with SedSed.
 
