@@ -7,6 +7,7 @@ layout: default
  <li><a href='#introduction'>Introduction</a></li>
  <li><a href='#a-note-about-shells'>A Note About Shells</a></li>
  <li><a href='#getting-started'>Getting Started</a></li>
+ <li><a href='#n-command'><code>n</code> Command</a></li>
 </ul>
 
 ## Introduction ##
@@ -160,5 +161,103 @@ Now, Vim will show a `-` for every stray traling whitespace at the
 end of lines (`:help listchars` and `:help list`).
 
 
+## `n` command ##
 
+
+From `info sed 'Common Commands'`:
+
+<blockquote>
+If auto-print is not disabled, print the pattern space, then, regardless,
+replace the pattern space with the next line of input. If there is no more
+input then sed exits without processing any more commands.
+</blockquote>
+
+This is file.txt:
+
+    $ cat file.txt
+    foo
+    bar
+    jedi
+
+Let's understand what the following Sed command does:
+
+    sed 'n' < file.txt
+
+Sed reads the first line of input, “foo” and places it in the PS. The command
+is `n`, so, Sed prints the PS and replaces PS with the next line, “bar”. Again,
+the `n` command is applied, which makes Sed print PS (which is now “bar”), and
+the last line of input is read. Now, “jedi” is in PS,`n` is executed, which
+causes PS to be once more printed to STDOUT. There are not more input lines, so
+sed just exits. At the end, this command just prints
+
+    foo
+    bar
+    jedi
+
+just like the `cat` command would do. As we see, the `n` command is not very
+useful on its own, but at least we now know how it works.
+
+Let's try an example that makes a little more sense. The `n` command is useful
+in situations where you want to deal with “every other line”, that is, you skip
+one line, and do something with the other. For example, you have this file
+where each country name is written in en\_US in odd lines, and in pt\_BR in
+even lines:
+
+    Japan
+    Japão
+    Brazil
+    Brasil
+    United States
+    Estados Unidos
+
+You want to add “(pt\_BR)” after each line where the name is indeed in pt\_BR.
+
+    $ sed 'n; s/.*/& (pt_BR)/' < countries.txt
+    Japan
+    Japão (pt_BR)
+    Brazil
+    Brasil (pt_BR)
+    United States
+    Estados Unidos (pt_BR)
+
+
+And if you want to add “en\_US” to the respective lines as well, we do:
+
+    $ sed 's/.*/& (en_US)/; n; s/.*/& (pt_BR)/' < countries.txt
+    Japan (en_US)
+    Japão (pt_BR)
+    Brazil (en_US)
+    Brasil (pt_BR)
+    United States (en_US)
+    Estados Unidos (pt_BR)
+
+
+Let's explain `sed 'n; s/.*/& (pt_BR)/'` first.
+
+Sed reads “Japan” into PS. The command is `n`, so, Sed just prints it and reads
+the next line of input. Note that Sed doesn't run the `s` command on “Japan”
+(because of the `n` command). Now “Japão” is in PS (again because of `n`) and
+the `s` command is run, causing “Japão” to become “Japão (pt\_BR)”, and PS is
+printed. There are no more commands, so, Sed just restarts the cycle again.
+
+“Brazil” is read into PS (which automatically replaces whatever was
+there). `n` is the command to be run, which causes PS to be printed and the
+next line of input to be read into PS, which causes PS now contain “Brasil”,
+which is the text that the `s` command operates on this time, turning “Brasil”
+into “Brasil (pt\_BR)”. PS is once more printed.
+
+The cycle starts once more for “United States”, which is simple printed, “Estados
+Unidos” is read into PS and operated on by the `s` command and then printed.
+
+Note that every time sed reads a line into the PS, it will run any commands on
+the contents of the PS and then automatically print the PS unless the `-n`
+command line option is used.
+
+As for `'s/.*/& (en_US)/; n; s/.*/& (pt_BR)/'`, the process is very similar.
+First, “Japan” is read into PS. The command is `s`, which turns “Japan”
+into “Japão (en\_US)”. Then `n` causes PS to be printed, and the next
+line of input to placed into PS (the old content of PS is gone by now). The
+current command is the second `s`, which replaces “Japão” with “Japão
+(pt\_BR). PS is printed and the cycle starts again for “Brazil” and
+finally for “United States”.
 
