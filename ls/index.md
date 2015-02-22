@@ -1,8 +1,9 @@
 ---
-title:  'ls command tutorial'
+title:  'ls command line tutorial'
 description: 'This is a tutorial about the LS command (Linux, BSD, MacOS and other Unix-like OSs). Lots of examples.'
+layout: default
 ---
-# `ls` command tutorial #
+# ls command tutorial #
 
 This is a tutorial about the LS command (Linux, BSD, MacOS and other Unix-like OSs). Lots of examples.
 
