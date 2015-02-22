@@ -14,11 +14,8 @@
       </a>
 
       <div class="trigger">
-        {% for page in site.pages %}
-          {% if page.type == 'intropage' %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-          {% endif %}
-        {% endfor %}
+        <a href="{{ site.baseurl }}/sed/">Sed</a> |
+        <a href="{{ site.baseurl }}/compiling-programs/">Compiling</a>
       </div>
     </nav>
 
