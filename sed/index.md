@@ -8,6 +8,8 @@ layout: default
 
 [Intermediate Sed Concepts and Commands](02-intermediate-sed.html).
 
+[s command](s-substitute-command.html).
+
 <p><a href='#other-sed-learning-resources'>Other Sed Learning Resources</a></p>
 
 The idea is to have a lot of repetition on the basic ideas on different types
