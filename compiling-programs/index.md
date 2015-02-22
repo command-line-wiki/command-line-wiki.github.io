@@ -1,5 +1,5 @@
 ---
-title: Compiling Programs
+title: Compiling Programs from the Command Line
 type: intropage
 layout: default
 ---
