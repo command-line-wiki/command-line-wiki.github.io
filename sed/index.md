@@ -6,7 +6,7 @@ layout: default
 
 [Basic Sed Concepts and Commands](01-basic-sed-concepts-and-commands.html).
 
-[Intermediate Sed Concepts and Commands](02-intermediate-sed.html).
+[Often Used Sed Commands](often-used-commands.html).
 
 [s command](s-substitute-command.html).
 

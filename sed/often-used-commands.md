@@ -1,5 +1,6 @@
 ---
-title: Basic Sed Concepts and Commands
+title: Often Used Sed Commands
+description: This page describes and provides examples on the most used sed commands.
 layout: default
 ---
 
@@ -7,7 +8,10 @@ layout: default
  <li><a href='#introduction'>Introduction</a></li>
  <li><a href='#a-note-about-shells'>A Note About Shells</a></li>
  <li><a href='#getting-started'>Getting Started</a></li>
- <li><a href='#n-command'><code>n</code> Command</a></li>
+ <li><a href='#comment-command'># comment command</a></li>
+ <li><a href='#q-quit-command'>q quit command</a></li>
+ <li><a href='#d-delete-command'>d delete command</a></li>
+ <li><a href='#p-print--command'>p print command</a></li>
 </ul>
 
 ## Introduction ##
@@ -161,7 +165,56 @@ Now, Vim will show a `-` for every stray traling whitespace at the
 end of lines (`:help listchars` and `:help list`).
 
 
-## `n` command ##
+## \# comment command ##
+
+Read ([online](https://www.gnu.org/software/sed/manual/sed.html#Common-Commands)):
+
+    info sed Common\ Commands
+
+Technically, `#` is also a command, and its use is the same as for programming
+languages: to describe and document what specific parts of code does, add
+licencing information, and even curse when projects requisites keep changing.
+
+Then, beware of that `#n` thing at the very first line of a script, as
+mentioned in the info page.
+
+
+## q quit command ##
+
+Read ([online](https://www.gnu.org/software/sed/manual/sed.html#Common-Commands)):
+
+    info sed Common\ Commands
+
+
+One example of the use of `q` is to do something only with the first occurrence
+of a pattern. If no addresses are specified, Sed will try to find a match in all
+lines of a file. That means that if you are trying to replace “Intro” with
+“INTRO” only the first time “Intro” appears on a file, you have to use `q`.
+
+    sed '/Intro/ { s/Intro/INTRO/; q };
+
+
+We haven't either talked about using regex as addresses yet, neither about using
+`{` and `}` to group commands, but that above command says, “look for a line
+that contains 'Intro' (and this is a regex, not a string), then, apply the
+following group of commands when that regex matches a line.” Inside the group
+we have the `s/Intro/INTRO/` command, then the command separator `;`, then the
+last command, the `q`.
+
+
+## d delete command ##
+
+TODO
+
+
+## p print command ##
+
+
+TODO
+
+
+
+## n command ##
 
 
 From `info sed 'Common Commands'`:
