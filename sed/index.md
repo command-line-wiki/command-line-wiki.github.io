@@ -4,7 +4,9 @@ type: intropage
 layout: default
 ---
 
-[Basic Sed Concepts and Commands](01-basic-sed-concepts-and-commands.html).
+[Introduction to Sed](intro-to-sed.html)
+
+[Basic Sed Concepts and Commands](often-used-commands.html).
 
 [Often Used Sed Commands](often-used-commands.html).
 
