@@ -83,11 +83,11 @@ More info:
 
 Short how to (the commands above):
 
-  https://demoncyber.wordpress.com/2012/01/28/configurando-teclado-abnt2-no-openbsd/
+https://demoncyber.wordpress.com/2012/01/28/configurando-teclado-abnt2-no-openbsd/
 
 More detailed stuff about a bug:
 
-  http://blog.nielshorn.net/2011/03/qemu-and-brazilian-keyboards/
+http://blog.nielshorn.net/2011/03/qemu-and-brazilian-keyboards/
 
 
 
