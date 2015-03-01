@@ -10,6 +10,8 @@ layout: default
 
 [Often Used Sed Commands](often-used-commands.html).
 
+[Basic Regex](basic-regex.html).
+
 [s command](s-substitute-command.html).
 
 <p><a href='#other-sed-learning-resources'>Other Sed Learning Resources</a></p>
