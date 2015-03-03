@@ -4,11 +4,11 @@ description: How to use the beginning of line/pattern space anchor in Sed, examp
 layout: default
 ---
 
-# ^ doesn't mean “beginning of line” #
+## Beginning of Pattern Space Anchor ##
 
 The `^` anchor generally means “match the null position at the beginning of a
 line”, although you can generally think like that in Sed as well, sometimes
-that leads to wrong assumptions.
+it can lead to wrong assumptions.
 
 The input file contains:
 
@@ -76,3 +76,4 @@ Remember this: When it comes to regex, `^` generally means “the null position
 at the beginning of a line”, but in Sed it really means “the null position
 at the beginning of the pattern space.”
 
+“
