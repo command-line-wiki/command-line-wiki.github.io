@@ -55,5 +55,7 @@ and better understand Sed in general.
 of cool Sed stuff.
 - [Colored Sed Scripts](http://sed.sourceforge.net/local/scripts/) &mdash;
 Stuff generated with SedSed.
+- [Peteris Krumins' Famous Sed Oneliners Explained](http://www.catonmat.net/blog/sed-one-liners-explained-part-one/) &mdash; Very nice article. There you'll find links
+to his other Sed posts.
 
 
