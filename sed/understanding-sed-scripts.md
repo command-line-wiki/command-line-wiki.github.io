@@ -62,7 +62,7 @@ Then comes the next command:
 
 That will substitute the
 [beginning of the pattern space](basic-regex.html#beginning-of-pattern-space-anchor)
-with 6 spaces. And what we have know is something like:
+with 6 spaces. And what we have now is something like:
 
         1
     foo
@@ -113,84 +113,19 @@ Just to make it clear, the full command now is
     sed '=' file.txt | sed 'N; s/^/      /; s/ *\(.\{6,\}\)\n/\1 /'
 
 
-That will find zero or more spaces, followed by six or more characters (any
-chars) followed by a newline. Those “six or more chars” are remembered because
-of the parenthesis. Whe then place the contents of what was remembered back
-with the `\1` notation and add a space after it. That is what causes both the
-numbers to be on the same line as the line of text itself, and the right-alighment
-of the numbers.
+`sed 'N'` will cause the pattern space to contain something like 
+<code>3\nfoo</code>, then
+`s/^/      /` makes the pattern space contain
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3\nfoo</code>, and finally, `s/
+*\(.\{6,\}\)\n/` will match (starting from the end) the newline, then digit 3
+and five spaces.
 
-But how does it really right-align the numbers? Suppose we have
-
-        n
-    foo
-
-And let's look at it in reverse order. `/ *\(.\{6,\}\)\n/` will match the
-newline, then it will match at least 6 characters, and remember then, plus
-any other white space on the far left, if necessary. Let's represent spaces
-with a `-` character.
-
-    -----n foo
-
-becomes
-
-
-Now,
-
-       nn
-    bar
-
-becomes
-
-    ----nn bar
-
-
-and
-
-     nnn
-    lorem
-
-becomes
-
-    ---nnn lorem
-
-That is
-
-    -----n foo
-    ----nn bar
-    ---nnn lorem
-
-The `\1` puts back some characters, possibly two or three numbers, and the rest
-is filled with leading spaces. The newline is discareded (it was not matched
-inside the group) and a single white space is added after the numbering.
-
-
-Suppose you have a file with this content:
-
-         9
-    foo
-         99
-    bar
-         999
-    jedi
-
-That is actually the output of
-
-    sed = file.txt | sed 'N; s/^/      /'
-
-But it is nice so we can isolate main part of the script to try to understand it:
-
-    sed 's/ *\(.\{6,\}\)\n/\1 /' < file.txt
-
-
-Sed will try to match 6 chars, and will use the <code>&nbsp;&#42;</code> part
-of the regex to match leading spaces only if needed to make the match happen.
-So, if we have three digits, and `.\{6,\}` will match those three digits, three
-leading spaces just before the digits, and the <code>&nbsp;&#42;</code> part
-will match any other white space before those if needed to cause the regex to
-match.
-
-
-
+If the pattern space contains
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;974\nbar</code>,
+`'s/ *\(.\{6,\}\)\n/'` will match the newline, the tree digits 9, 7 and 4, and
+tree spaces. Note that in all the cases, altough <code>&#42;</code> is greedy,
+only the necessary numbers of spaces are matched in <code>&nbsp;&#42;</code> so
+that the entire expression finds “zero or more spaces, followed by six
+characters, followed by a newline.”
 
 
