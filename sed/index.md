@@ -4,6 +4,8 @@ type: intropage
 layout: default
 ---
 
+# Sed Tutorial, Examples, Scripts and Tips #
+
 [Introduction to Sed](intro-to-sed.html)
 
 [Basic Sed Concepts and Commands](often-used-commands.html).
